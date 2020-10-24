@@ -8,7 +8,7 @@ const { static } = require('express');
 //
 const app = express();
 
-mongoose.connect('mongodb+srv://AdminUser:4ZEQGQx04o02WMSf@testcluster1.yvbo1.mongodb.net/test?retryWrites=true&w=majority').then(() => {
+mongoose.connect('').then(() => {
     console.log('Conneted to DB');
 }).catch(() => {
     console.log('Failed conneting to DB!');
