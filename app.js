@@ -8,7 +8,9 @@ const { static } = require('express');
 //
 const app = express();
 
-mongoose.connect('').then(() => {
+mongoose.set('useCreateIndex', true);
+// mongoose.connect('mongodb+srv://gilav21:ZVcCuLov6Jze5ib1@borker.cvexh.mongodb.net/borker?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
+mongoose.connect('mongodb://localhost:27017/borker', {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
     console.log('Conneted to DB');
 }).catch(() => {
     console.log('Failed conneting to DB!');
