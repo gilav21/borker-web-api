@@ -1,0 +1,73 @@
+[{
+  "_id": {
+    "$oid": "626ebd459d710b1dbc4a9078"
+  },
+  "owners": [
+    "626ea5f9e950821be427ec00",
+    "626eaf3d8590ec60d8242975"
+  ],
+  "photos": [
+    "alfie3.jpeg_01652026204479.jpg",
+    "alfie1.jpg_01652026204515.jpg",
+    "alfie2.jpg_01652026204587.jpg",
+    "alfie4.jpg_01652026204682.jpg",
+    "alfie5.jpg_01652026204703.jpg"
+  ],
+  "name": "Alfie",
+  "__v": 5
+},{
+  "_id": {
+    "$oid": "626ec0538ce0b77634bc6048"
+  },
+  "owners": [
+    "626ea5f9e950821be427ec00",
+    "626eaf3d8590ec60d8242975"
+  ],
+  "photos": [
+    "bamba1.jpg_01652026141558.jpg",
+    "bamba2.jpg_01652026141635.jpg",
+    "bamba3.jpg_01652026141719.jpg",
+    "bamba4.jpg_01652026141807.jpg"
+  ],
+  "name": "Bamba",
+  "__v": 1
+},{
+  "_id": {
+    "$oid": "6277ed5bcf62544ae8c03f43"
+  },
+  "owners": [
+    "626ea5f9e950821be427ec00",
+    "626eaf3d8590ec60d8242975"
+  ],
+  "photos": [
+    "zazoo1.jpg_01652026749813.jpg",
+    "zazoo2.jpg_01652026749915.jpg"
+  ],
+  "name": "Zazoo",
+  "__v": 1
+},{
+  "_id": {
+    "$oid": "6277edadcf62544ae8c03f6c"
+  },
+  "owners": [
+    "626ea5f9e950821be427ec00",
+    "626eaf3d8590ec60d8242975"
+  ],
+  "photos": [
+    "chubaka.jpg_01652026824631.jpg",
+    "chubaka2.jpg_01652026824655.jpg"
+  ],
+  "name": "Chubaka",
+  "__v": 1
+},{
+  "_id": {
+    "$oid": "6277eebfcf62544ae8c03f7b"
+  },
+  "owners": [
+    "626ea5f9e950821be427ec00",
+    "626eaf3d8590ec60d8242975"
+  ],
+  "photos": [],
+  "name": "Yulia",
+  "__v": 0
+}]
