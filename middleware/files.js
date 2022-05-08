@@ -13,14 +13,14 @@ const storage = multer.diskStorage({
         let error = new Error('invalid mime type');
         if (isValid) {
             error = null;
-        }
+        } 
         cb(error, 'backend/images');
     },
     filename: (req, file, cb) => {
         const name = file.originalname.toLocaleLowerCase().split(' ').join('-');
         const ext = MIME_TYPE_MAP[file.mimetype];
-        cb(null, name + '0' + Date.now() + '.' + ext);
+        cb(null, name + '_0' + Date.now() + '.' + ext);
     }
 });
 
-module.exports = multer({storage: storage}).single('image');
+module.exports = multer({storage: storage}).array('images');

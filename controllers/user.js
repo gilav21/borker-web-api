@@ -1,31 +1,14 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
-
+const usersProvider = require('../providers/usersProvider');
 const SECRET = 'lalalaisaverylongpasswordtoencryptjwttokens';
-const USER_SELECT_FIELDS = '_id email username firstName lastName';
+const USER_SELECT_FIELDS = '_id email userName firstName lastName';
 
-exports.getUsers = (req, res, next) => {
-    console.log(req.query);
-    const pageSize = +req.query.pageSize;
-    const currentPage = +req.query.page;
-    const postQuery = User.find().select(USER_SELECT_FIELDS);
-
-    // get pagination posts
-    if (pageSize && currentPage) {
-        postQuery
-            // set the offset to skip the first pages
-            .skip(pageSize * (currentPage - 1))
-            // get only 'pageSize' items
-            .limit(pageSize);
-
-    }
-    // get all posts
-    postQuery.find().then(results => {
-        res.status(200).json({ message: 'Names Fetches succssfully!', users: results });
-    }).catch((err) => {
-        console.log(err);
-    });
+exports.getUsers = async (req, res, next) => {
+    const userQuery = req.query.user;
+    const users = await usersProvider.getUsersLike(userQuery);
+    res.status(200).json({ message: 'Users Fetches succssfully!', users });
 };
 
 exports.deleteUser = (req, res, next) => {
@@ -52,11 +35,11 @@ exports.loginUser = (req, res, next) => {
         }
         // create JWT and send back
         const token = signJwt({ email: fetchedUser.email, userId: fetchedUser._id });
-            res.status(200).json({
-                token: token,
-                expiresIn: (1000 * 60 * 60),
-                user: fetchedUser
-            })
+        res.status(200).json({
+            token: token,
+            expiresIn: (1000 * 60 * 60),
+            user: fetchedUser
+        })
     }).catch(err => {
         console.log(err);
         return res.status(401).json({ message: 'Auth failed' });
@@ -66,11 +49,27 @@ exports.loginUser = (req, res, next) => {
 exports.renewToken = async (req, res, next) => {
     const token = req.body.token;
     if (token) {
-        const content = jwt.verify(token, SECRET);
+        try {
+            const content = jwt.verify(token, SECRET);
+            const user = await User.findOne({ email: content.email });
+            if (user) {
+                const token = signJwt({ email: user.email, userId: user._id });
+                res.status(200).json({ token });
+            } else {
+                res.status(500).json({
+                    error: `couldn't find token's user`
+                });
+            }
+
+        } catch (err) {
+            res.status(500).json({
+                error: `couldn't find token's user:` + err.message
+            });
+        }
         const user = await User.findOne({ email: content.email });
         if (user) {
             const token = signJwt({ email: user.email, userId: user._id });
-            res.status(200).json({token});
+            res.status(200).json({ token });
         } else {
             res.status(500).json({
                 error: `couldn't find token's user`
@@ -110,10 +109,10 @@ exports.signup = (req, res, next) => {
     });
 }
 
-exports.checkUserName= async (req, res, next) => {
-    const userName = req.params.userName;
+exports.checkUserName = async (req, res, next) => {
+    const userName = req.query.userName;
     if (userName && userName.length > 0) {
-        const user = await User.find({username : userName});
+        const user = await User.findOne({ username: userName });
         if (user) {
             res.status(500).json({
                 error: `Username already exist`
@@ -126,6 +125,26 @@ exports.checkUserName= async (req, res, next) => {
     } else {
         res.status(500).json({
             error: `User name can't be empty`
+        });
+    }
+}
+
+exports.checkEmail = async (req, res, next) => {
+    const email = req.query.email;
+    if (email && email.length > 0) {
+        const user = await User.findOne({ email: email });
+        if (user) {
+            res.status(500).json({
+                error: `Email already exist`
+            });
+        } else {
+            res.status(200).json({
+                message: 'Email available'
+            })
+        }
+    } else {
+        res.status(500).json({
+            error: `Email can't be empty`
         });
     }
 }
