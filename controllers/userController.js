@@ -1,9 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../models/user');
+const User = require('../models/userModel');
 const usersProvider = require('../providers/usersProvider');
-const SECRET = 'lalalaisaverylongpasswordtoencryptjwttokens';
-const USER_SELECT_FIELDS = '_id email userName firstName lastName';
 
 exports.getUsers = async (req, res, next) => {
     const userQuery = req.query.user;
@@ -19,43 +17,43 @@ exports.deleteUser = (req, res, next) => {
     })
 };
 
-exports.loginUser = (req, res, next) => {
+exports.loginUser = async (req, res, next) => {
     let fetchedUser;
-    User.findOne({ email: req.body.email }).then(user => {
-        if (!user) {
-            return res.status(401).json({ message: 'Auth failed' });
-        }
-        const password = user.password;
-        delete user.password;
-        fetchedUser = user;
-        return bcrypt.compare(req.body.password, password)
-    }).then(result => {
-        if (!result) {
-            return res.status(401).json({ message: 'Auth failed' });
-        }
-        // create JWT and send back
-        const token = signJwt({ email: fetchedUser.email, userId: fetchedUser._id });
-        res.status(200).json({
-            token: token,
-            expiresIn: (1000 * 60 * 60),
-            user: fetchedUser
-        })
-    }).catch(err => {
-        console.log(err);
+    const user = await User.findOne({ email: req.body.email })
+    if (!user) {
+        console.error('Auth failed at login');
         return res.status(401).json({ message: 'Auth failed' });
-    });
+    }
+    const password = user.password;
+    delete user.password;
+    fetchedUser = user;
+    const result = await bcrypt.compare(req.body.password, password);
+    if (!result) {
+        console.error('Auth failed at password compare');
+        res.status(401).json({ message: 'Auth failed' });
+    }
+    // create JWT and send back
+    const token = signJwt({ email: fetchedUser.email, userId: fetchedUser._id });
+    console.log('logged in: ', fetchedUser._id);
+    res.status(200).json({
+        token: token,
+        expiresIn: (1000 * 60 * 60),
+        user: fetchedUser
+    })
 };
 
 exports.renewToken = async (req, res, next) => {
     const token = req.body.token;
     if (token) {
         try {
-            const content = jwt.verify(token, SECRET);
+            const content = jwt.decode(token);
             const user = await User.findOne({ email: content.email });
             if (user) {
                 const token = signJwt({ email: user.email, userId: user._id });
+                console.log('renewed token');
                 res.status(200).json({ token });
             } else {
+                console.error(`couldn't find token's user`);
                 res.status(500).json({
                     error: `couldn't find token's user`
                 });
@@ -64,15 +62,6 @@ exports.renewToken = async (req, res, next) => {
         } catch (err) {
             res.status(500).json({
                 error: `couldn't find token's user:` + err.message
-            });
-        }
-        const user = await User.findOne({ email: content.email });
-        if (user) {
-            const token = signJwt({ email: user.email, userId: user._id });
-            res.status(200).json({ token });
-        } else {
-            res.status(500).json({
-                error: `couldn't find token's user`
             });
         }
     } else {
@@ -84,11 +73,11 @@ exports.renewToken = async (req, res, next) => {
 
 const signJwt = (content) => {
     return jwt.sign(content,
-        'lalalaisaverylongpasswordtoencryptjwttokens', { expiresIn: '1h' });
+        'lalalaisaverylongpasswordtoencryptjwttokens', { expiresIn: '30m' });
 }
 
 exports.signup = (req, res, next) => {
-    bcrypt.hash(req.body.password, 15).then(hash => {
+    bcrypt.hash(req.body.password, 13).then(hash => {
         const user = new User({
             userName: req.body.userName,
             firstName: req.body.firstName,
@@ -97,11 +86,13 @@ exports.signup = (req, res, next) => {
             password: hash,
         });
         user.save().then(result => {
+            console.log('signed up: ', result._id);
             res.status(200).json({
                 message: 'User added successfully!',
                 id: result._id
             });
         }).catch(err => {
+            console.error('failed signing the user: ', err);
             res.status(500).json({
                 error: err
             });
