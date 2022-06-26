@@ -23,7 +23,7 @@ exports.getPetsByUserId = async (req, res, next) => {
     const userId = req.query.userId;
     const pets = await Pet.find({
         owners: { $in: userId }
-    });
+    }).lean().exec();
 
     res.status(200).json({ message: 'Retreived pets successfully', pets });
 }

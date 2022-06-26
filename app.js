@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const usersRoutes = require('./routes/usersRoute');
 const petsRoutes = require('./routes/petsRoute');
 const peeAndPooRoutes = require('./routes/peeAndPooRoute');
+const photosRoutes = require('./routes/photoRoute');
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use((req, res, next) => {
 app.use('/api/users', usersRoutes);
 app.use('/api/pets', petsRoutes);
 app.use('/api/peeAndPoo', peeAndPooRoutes);
+app.use('/api/photos', photosRoutes);
 
 module.exports = app;
 

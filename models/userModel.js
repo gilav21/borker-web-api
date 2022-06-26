@@ -6,6 +6,7 @@ const userSchema = mongoose.Schema({
     userName: {type: String, required: true, unique: true},
     firstName: {type: String, required: true},
     lastName: {type: String, required: true},
+    profilePhoto: {type: mongoose.Types.ObjectId, ref: 'Photo'},
     createdAt: {type: Date, required: true, default: Date.now},
 });
 

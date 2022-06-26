@@ -10,7 +10,8 @@ exports.getUsersLike = async (user, fields) => {
             { userName: userRegexp },
             { firstName: userRegexp },
             { lastName: userRegexp },
-            { email: userRegexp }
+            { email: userRegexp },
+            { _id: userRegexp}
         ]
     }).select(fields ? fields : USER_SELECT_FIELDS);
     return users;
