@@ -10,6 +10,15 @@ const userSchema = mongoose.Schema({
     createdAt: {type: Date, required: true, default: Date.now},
 });
 
+var autoPopulateChildren = function(next) {
+    console.log('populate user');
+    next();
+};
+
+userSchema
+.pre('findOne', autoPopulateChildren)
+.pre('find', autoPopulateChildren)
+
 userSchema.index('email');
 userSchema.index('userName');
 module.exports = mongoose.model('User', userSchema);

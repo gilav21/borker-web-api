@@ -11,4 +11,16 @@ const peeAndPooSchema = mongoose.Schema({
     createdBy: {type: mongoose.Types.ObjectId, ref: 'User'}
 });
 
+
+var autoPopulateChildren = function(next) {
+    console.log('populate peeAndPoo');
+    // this.populate('petId');
+    // this.populate('photos');
+    next();
+};
+
+peeAndPooSchema
+.pre('findOne', autoPopulateChildren)
+.pre('find', autoPopulateChildren)
+
 module.exports = mongoose.model('PeeAndPoo', peeAndPooSchema);

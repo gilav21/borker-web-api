@@ -1,13 +1,13 @@
 const Pet = require('../models/petModel');
 const Photo = require('../models/photoModel');
 const path = require('path');
-const ObjectId = require('mongoose').Types.ObjectId;
+const mongoose = require('mongoose');
 
 
 exports.getPetById = async (req, res, next) => {
     const petId = req.params.petId;
     const userId = req.userData.userId;
-    const pet = await Pet.findById(petId);
+    const pet = await Pet.findById(petId)
     if (pet) {
         if (isOwner(pet, userId)) {
             res.status(200).json({ message: 'Retreived pet successfully', pet });
@@ -21,9 +21,11 @@ exports.getPetById = async (req, res, next) => {
 
 exports.getPetsByUserId = async (req, res, next) => {
     const userId = req.query.userId;
+    const id = mongoose.Types.ObjectId(userId);
     const pets = await Pet.find({
-        owners: { $in: userId }
-    }).lean().exec();
+        owners: { $in: id }
+    })
+    .lean().exec();
 
     res.status(200).json({ message: 'Retreived pets successfully', pets });
 }
@@ -83,14 +85,15 @@ exports.getPetImages = async (req, res, next) => {
 }
 
 exports.petImage = async (req, res, next) => {
-    const photoId = req.params.photoId; 
-    if (photoId && ObjectId.isValid(photoId)) {
+    const photoId = req.params.photoId;  
+    if (photoId && photoId !== 'undefined') {
         const photo = await Photo.findById(photoId);
         if (photo) {
             const fileName = photo.url;
             const petId = photo.petId;
             const userId = req.userData.userId;
-            const pet = await Pet.findById(petId);
+            const pet = await Pet.findById(petId)
+
             if (isOwner(pet, userId)) {
                 const options = {
                     root: path.join('backend/images/')
@@ -139,5 +142,5 @@ exports.changeProfileImage = async (req, res, next) => {
 }
 
 const isOwner = (pet, userId) => {
-    return pet.owners.findIndex(owner => owner === userId) !== -1;
+    return pet.owners.findIndex(owner => owner?._id?.toString() === userId) !== -1;
 }

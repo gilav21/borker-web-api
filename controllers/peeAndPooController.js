@@ -27,7 +27,8 @@ exports.getPeeAndPooByPetId = async (req, res, next) => {
             sort[req.query.sortBy] = +req.query.direction;
         }
         console.log('sorting:', sort)
-        const peeAndPoops = await PeeAndPoo.find({ petId }).sort(sort);
+        const peeAndPoops = await PeeAndPoo.find({ petId })
+        .sort(sort);
         res.status(200).json({ message: 'Retreived pee and poos successfully', peeAndPoops });
     } catch (err) {
         res.status(500).json({error: err});

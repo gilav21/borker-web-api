@@ -8,4 +8,17 @@ const commentSchema =  mongoose.Schema({
     comments: [{type: mongoose.Types.ObjectId, ref: 'Comment'}]
 });
 
-module.exports = mongoose.model('Comment', commentSchema);
+var autoPopulateChildren = function(next) {
+    console.log('populate comment');
+    this.populate('userId');
+    // this.populate('reactions');
+    next();
+};
+
+commentSchema
+.pre('findOne', autoPopulateChildren)
+.pre('find', autoPopulateChildren)
+
+ const schema= mongoose.model('Comment', commentSchema);
+ 
+ module.exports = schema;
