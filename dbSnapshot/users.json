@@ -1,0 +1,27 @@
+[{
+  "_id": {
+    "$oid": "626ea5f9e950821be427ec00"
+  },
+  "userName": "gilav21",
+  "firstName": "Gil",
+  "lastName": "Avraham",
+  "email": "gilav21@gmail.com",
+  "password": "$2a$15$np24q9ltUcG04WvIoqWK3.l836MOxFmMOATY1ElmPYWDs2lbxnVDW",
+  "__v": 0,
+  "profilePhoto": {
+    "$oid": "628e4ac45d284a5c1009a02a"
+  }
+},{
+  "_id": {
+    "$oid": "626eaf3d8590ec60d8242975"
+  },
+  "userName": "swox",
+  "firstName": "Daria",
+  "lastName": "Popov",
+  "email": "swoxmail@gmail.com",
+  "password": "$2a$15$WT7yZ9Y/ffNYWAKXY1f4.On83LswJ6dR.IvQ12CpSWpD/ySkQlLk2",
+  "__v": 0,
+  "profilePhoto": {
+    "$oid": "628e4ac45d284a5c1009a02a"
+  }
+}]

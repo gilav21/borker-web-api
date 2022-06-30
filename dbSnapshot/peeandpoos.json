@@ -1,0 +1,310 @@
+[{
+  "_id": {
+    "$oid": "62a5d7796a6d397c381466a0"
+  },
+  "photos": null,
+  "description": "asdasd",
+  "petId": {
+    "$oid": "628e4ae55d284a5c1009a041"
+  },
+  "quality": "good",
+  "type": "Poo",
+  "location": "31.7935506:35.2434775",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1655035769007"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62a5def16a6d397c381467ea"
+  },
+  "photos": null,
+  "description": "Another one",
+  "petId": {
+    "$oid": "628e4ae55d284a5c1009a041"
+  },
+  "quality": "good",
+  "type": "Poo",
+  "location": "31.7935283:35.2435124",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1655037681354"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62a5deff6a6d397c381467ec"
+  },
+  "photos": null,
+  "description": "Another one",
+  "petId": {
+    "$oid": "628e4ae55d284a5c1009a041"
+  },
+  "quality": "good",
+  "type": "Poo",
+  "location": "31.7935283:35.2435124",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1655037695033"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62a5df496a6d397c381467fa"
+  },
+  "photos": null,
+  "description": "Another 2",
+  "petId": {
+    "$oid": "628e4ae55d284a5c1009a041"
+  },
+  "quality": "neutral",
+  "type": "Poo",
+  "location": "31.7935283:35.2435124",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1655037769063"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62a5ef336a6d397c38146afa"
+  },
+  "photos": null,
+  "description": "Stam Test",
+  "petId": {
+    "$oid": "628e4ae55d284a5c1009a041"
+  },
+  "quality": "bad",
+  "type": "Poo",
+  "location": "31.7935412:35.2434893",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1655041843442"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62a5efd66a6d397c38146b08"
+  },
+  "photos": null,
+  "description": "",
+  "petId": {
+    "$oid": "628e4ae55d284a5c1009a041"
+  },
+  "quality": "neutral",
+  "type": "Poo",
+  "location": "31.7935471:35.2434884",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1655042006698"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62a5efe56a6d397c38146b0a"
+  },
+  "photos": null,
+  "description": "vxcvcvxvcxv",
+  "petId": {
+    "$oid": "628e4ae55d284a5c1009a041"
+  },
+  "quality": "bad",
+  "type": "Pee",
+  "location": "31.7935471:35.2434884",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1655042021391"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62a5f3816a6d397c38146c36"
+  },
+  "photos": null,
+  "description": "Biiiiig Poop",
+  "petId": {
+    "$oid": "628e4ac45d284a5c1009a027"
+  },
+  "quality": "good",
+  "type": "Poo",
+  "location": "31.7935388:35.2434927",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1655042945501"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62a5f5ab6a6d397c38146c8b"
+  },
+  "photos": null,
+  "description": "",
+  "petId": {
+    "$oid": "628e4ac45d284a5c1009a027"
+  },
+  "quality": "good",
+  "type": "Poo",
+  "location": "31.7935393:35.2434966",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1655043499593"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62a60bf16a6d397c38146f53"
+  },
+  "photos": null,
+  "description": "Description",
+  "petId": {
+    "$oid": "628e4ae55d284a5c1009a041"
+  },
+  "quality": "neutral",
+  "type": "Poo",
+  "location": "31.7935776:35.2434697",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1655049201578"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62a60c436a6d397c38146f67"
+  },
+  "photos": null,
+  "description": "Test",
+  "petId": {
+    "$oid": "628e4ae55d284a5c1009a041"
+  },
+  "quality": "good",
+  "type": "Poo",
+  "location": "31.793581:35.2434852",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1655049283018"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62a60e456a6d397c38146fed"
+  },
+  "photos": null,
+  "description": "Gil1",
+  "petId": {
+    "$oid": "628e4ae55d284a5c1009a041"
+  },
+  "quality": "neutral",
+  "type": "Poo",
+  "location": "31.7935272:35.243508",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1655049797443"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62a60e7b6a6d397c38147007"
+  },
+  "photos": null,
+  "description": "Gil2",
+  "petId": {
+    "$oid": "628e4ae55d284a5c1009a041"
+  },
+  "quality": "bad",
+  "type": "Poo",
+  "location": "31.7935473:35.2435041",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1655049851329"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62a61a80e4a0276ae4784a5c"
+  },
+  "photos": null,
+  "description": "asdasdad",
+  "petId": {
+    "$oid": "628e4ae55d284a5c1009a041"
+  },
+  "quality": "bad",
+  "type": "Poo",
+  "location": "31.7935391:35.2434983",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1655052928201"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62a62977e4a0276ae4784ae4"
+  },
+  "photos": null,
+  "description": "Great poop, great success",
+  "petId": {
+    "$oid": "628e4ae55d284a5c1009a041"
+  },
+  "quality": "good",
+  "type": "Poo",
+  "location": "32.7122944:35.2944128",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1655056759106"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62a629f1e4a0276ae4784b19"
+  },
+  "photos": null,
+  "description": "Small pooplet",
+  "petId": {
+    "$oid": "628e4ac45d284a5c1009a027"
+  },
+  "quality": "neutral",
+  "type": "Poo",
+  "location": "32.7122944:35.2944128",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1655056881795"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62a62ac9bf06384e544a7638"
+  },
+  "photos": null,
+  "description": "Helllo",
+  "petId": {
+    "$oid": "628e4ac45d284a5c1009a027"
+  },
+  "quality": "good",
+  "type": "Poo",
+  "location": "32.7122944:35.2944128",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1655057097905"
+    }
+  },
+  "createdBy": {
+    "$oid": "626ea5f9e950821be427ec00"
+  },
+  "__v": 0
+}]

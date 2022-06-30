@@ -1,0 +1,74 @@
+[{
+  "_id": {
+    "$oid": "628e4ac45d284a5c1009a027"
+  },
+  "owners": [
+    {
+      "$oid": "626ea5f9e950821be427ec00"
+    },
+    {
+      "$oid": "626eaf3d8590ec60d8242975"
+    }
+  ],
+  "photos": [
+    {
+      "$oid": "628e4ac45d284a5c1009a02a"
+    },
+    {
+      "$oid": "628e4ac45d284a5c1009a02c"
+    },
+    {
+      "$oid": "628e4ac45d284a5c1009a02e"
+    },
+    {
+      "$oid": "628e4ac45d284a5c1009a030"
+    },
+    {
+      "$oid": "628e4ac45d284a5c1009a032"
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1653492420172"
+    }
+  },
+  "name": "Alfie",
+  "description": "Big Black Doggggg",
+  "createdBy": "626ea5f9e950821be427ec00",
+  "__v": 1
+},{
+  "_id": {
+    "$oid": "628e4ae55d284a5c1009a041"
+  },
+  "owners": [
+    {
+      "$oid": "626ea5f9e950821be427ec00"
+    },
+    {
+      "$oid": "626eaf3d8590ec60d8242975"
+    }
+  ],
+  "photos": [
+    {
+      "$oid": "628e4ae65d284a5c1009a044"
+    },
+    {
+      "$oid": "628e4ae65d284a5c1009a046"
+    },
+    {
+      "$oid": "628e4ae65d284a5c1009a048"
+    },
+    {
+      "$oid": "628e4ae65d284a5c1009a04a"
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1653492453785"
+    }
+  },
+  "name": "Bamaba",
+  "description": "Big anxiety in a little dog",
+  "createdBy": "626ea5f9e950821be427ec00",
+  "__v": 1
+}]
