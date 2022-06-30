@@ -70,7 +70,7 @@ exports.addReaction = async (req, res, next) => {
     let reactionIndex;
     let reaction;
     if (photo.reactions && photo.reactions.length > 0) {
-        reactionIndex = await photo.reactions.findIndex(reaction => reaction.userId.toString() === userId);
+        reactionIndex = await photo.reactions.findIndex(reaction => reaction.userId.id.toString() === userId);
     }
 
     if (reactionIndex == null || reactionIndex === -1) {
@@ -82,6 +82,7 @@ exports.addReaction = async (req, res, next) => {
     } else {
         const newReaction = await Reaction.findById(photo.reactions[reactionIndex]._id);
         newReaction.type = reactionType;
+        newReaction.createdAt = Date.now();
         reaction = await newReaction.save();
     }
 
