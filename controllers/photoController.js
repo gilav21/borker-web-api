@@ -1,6 +1,7 @@
 const Reaction = require('../models/reactionModel');
 const Comment = require('../models/commentModel');
 const Photo = require('../models/photoModel');
+const User = require('../models/userModel');
 
 const ReactionTypes = {
     Smile: 0,
@@ -48,7 +49,7 @@ exports.addComment = async (req, res, next) => {
     const photo = await Photo.findById(photoId);
     const commentObj = new Comment();
     commentObj.comment = commentString;
-    commentObj.userId = userId;
+    commentObj.userId = await User.findById(userId);
     commentObj.reactions = [];
     const comment = await commentObj.save();
     if (photo.comments) {
